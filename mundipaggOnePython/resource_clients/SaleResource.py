@@ -56,7 +56,7 @@ class SaleResource(AbstractResource):
         request_header = {"MerchantKey": str(self.merchant_key), 'Content-Type': 'application/json',
                           'Accept': 'application/json'}
 
-        return requests.post(urlparse.urljoin(self.host_uri, action_name),
+        return requests.post(urljoin(self.host_uri, action_name),
                              data=json.dumps(manage_sale_request, cls=uuid_serialize), headers=request_header)
 
     def manage_with_order_key(self, manage_operation, order_key):
