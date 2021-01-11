@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import json
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
 from uuid import UUID
 
 import requests
@@ -24,7 +24,7 @@ class SaleResource(AbstractResource):
     def create_with_request(self, create_sale_request):
         request_header = {"MerchantKey": str(self.merchant_key), 'Content-Type': 'application/json',
                           'Accept': 'application/json'}
-        return requests.post(urlparse.urljoin(self.host_uri, 'Sale'),
+        return requests.post(urljoin(self.host_uri, 'Sale'),
                              data=json.dumps(create_sale_request, cls=uuid_serialize), headers=request_header)
 
     def create_with_creditcard_collection(self, creditcard_transaction_collection):
