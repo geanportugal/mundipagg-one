@@ -1,4 +1,4 @@
-import urlparse
+from urllib.parse import urlparse
 from uuid import UUID
 
 import requests
